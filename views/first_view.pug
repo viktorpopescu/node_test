@@ -1,0 +1,18 @@
+doctype html
+html
+    head
+        title=name
+    body
+        p.greetings#people Hello World!
+        div.
+            All sorts of stuff can be found here and it doesn't matter.
+            Just keep writing whatever you can think of.
+        div.container.column.main#division(width="100", height="100")  Pam Pam
+        h1=name
+        a(href = url) URL
+        h3.
+            I don't know who wouldn't want to learn from #{fancyname}.
+        if(user)
+            h4 Hi, #{user.name}
+        else
+            h4 We don't know you. Please sign in to proceed.
