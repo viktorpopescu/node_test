@@ -32,6 +32,12 @@ app.get("/person", function(req,res){
     console.log('get received');
 });
 
+app.get('/people', function(req, res){
+    Person.find(function(err, response){
+        res.json(response);
+    });
+});
+
 app.post('/person', function(req, res){
     console.log('post received');
     var personInfo = req.body; //Get the parsed information
@@ -62,5 +68,26 @@ app.post('/person', function(req, res){
                 console.log(response);
             });
     }
+});
+
+app.get('/sadee', function(req,res){
+    Person.update({nationality:"sadee"}, {age: 22},{multi: true}, function(err, response){
+        console.log(response);
+        res.json(response);
+    });
+});
+
+app.get('/del20', function(req,res){
+    Person.remove({age: 22}, function(err, response){
+        console.log(response);
+        res.json(response);
+    });
+});
+
+app.put('/people/:id', function(req, res){
+    Person.findByIdAndUpdate(req.params.id, req.body, function(err, response){
+        if(err) res.json({message: "Error in update "+req.params.id});
+        res.json(response);
+    });
 });
 app.listen(3000);
